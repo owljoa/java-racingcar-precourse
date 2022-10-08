@@ -22,8 +22,12 @@ public class Car {
         int racingNumber = RacingNumberGenerator.generate();
 
         if (racingNumber >= MIN_RACING_NUMBER_FOR_MOVE_FORWARD) {
-            position += 1;
+            moveForward();
         }
+    }
+
+    private void moveForward() {
+        position += 1;
     }
 
     public String getName() {
