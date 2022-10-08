@@ -20,6 +20,20 @@ public class CarTest {
         racingNumberGenerator.close();
     }
 
+    @DisplayName("자동차_정상_생성")
+    @Test
+    void 자동차_정상_생성() {
+        // given
+        String inputName = "myCar";
+
+        // when
+        Car car = new Car(inputName);
+
+        // then
+        Assertions.assertEquals(inputName, car.getName());
+        Assertions.assertEquals(0, car.getPosition());
+    }
+
     @DisplayName("이름_5자_초과_예외_발생_검증")
     @Test
     void 이름_5자_초과_예외_발생_검증() {
