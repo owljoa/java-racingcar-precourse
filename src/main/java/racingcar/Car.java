@@ -18,6 +18,14 @@ public class Car {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public void race() {
         int racingNumber = RacingNumberGenerator.generate();
 
@@ -28,13 +36,5 @@ public class Car {
 
     private void moveForward() {
         position += 1;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
     }
 }
