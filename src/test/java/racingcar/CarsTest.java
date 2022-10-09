@@ -7,6 +7,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
+import java.util.Set;
 
 public class CarsTest {
 
@@ -46,16 +47,10 @@ public class CarsTest {
         raceWithInputRaceNumber(cars, 4, 4, 3);
 
         // then
-        Winners winners = cars.getWinners();
-        Assertions.assertTrue(
-                winners.getCarNames().contains(winnerCar.getName())
-        );
-        Assertions.assertTrue(
-                winners.getCarNames().contains(coWinnerCar.getName())
-        );
-        Assertions.assertFalse(
-                winners.getCarNames().contains(loserCar.getName())
-        );
+        Set<String> winnerCarNames = cars.getWinners().getCarNames();
+        Assertions.assertTrue(winnerCarNames.contains(winnerCar.getName()));
+        Assertions.assertTrue(winnerCarNames.contains(coWinnerCar.getName()));
+        Assertions.assertFalse(winnerCarNames.contains(loserCar.getName()));
     }
 
     private void raceWithInputRaceNumber(Cars cars, int firstRaceNumber, int... raceNumbersAfterFirst) {
