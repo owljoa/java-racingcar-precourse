@@ -35,6 +35,10 @@ public class Cars {
         }
     }
 
+    public List<Car> getCarList() {
+        return cars;
+    }
+
     public Winners getWinners() {
         Set<String> winnerCarNames = new HashSet<>();
         int farthestPosition = getFarthestCarPosition();

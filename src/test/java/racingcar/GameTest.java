@@ -29,4 +29,27 @@ public class GameTest {
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Game(targetRaceCount, cars));
     }
+
+    @Test
+    void 회차별_자동차별_위치_메시지_생성() throws Throwable {
+        // given
+        int targetRaceCount = 2;
+        Cars cars = new Cars("win", "loser", "cowin");
+        Game game = new Game(targetRaceCount, cars);
+
+        // when
+        RacingNumberGeneratorMock.executeSomethingWithRaceNumbers(
+                game::startRace,
+                4,
+                3, 4, 4, 4, 4
+        );
+        String resultMessage = game.getResultMessage();
+
+        // then
+        String expectedMessage = "win : --\n" +
+                "loser : -\n" +
+                "cowin : --\n\n";
+
+        Assertions.assertEquals(expectedMessage, resultMessage);
+    }
 }
