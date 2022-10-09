@@ -48,7 +48,7 @@ public class GameTest {
         // then
         String expectedMessage = "win : --\n" +
                 "loser : -\n" +
-                "cowin : --\n\n";
+                "cowin : --\n";
 
         Assertions.assertEquals(expectedMessage, resultMessage);
     }

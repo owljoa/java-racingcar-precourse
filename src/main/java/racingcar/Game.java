@@ -47,7 +47,6 @@ public class Game {
         for (Car car : carList) {
             makeResultMessageForSingleCar(stringBuilder, car);
         }
-        stringBuilder.append(LINE_BREAK);
 
         return stringBuilder.toString();
     }
