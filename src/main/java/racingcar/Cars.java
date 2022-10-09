@@ -40,7 +40,7 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        Set<String> winnerCarNames = new HashSet<>();
+        LinkedHashSet<String> winnerCarNames = new LinkedHashSet<>();
         int farthestPosition = getFarthestCarPosition();
 
         for (Car car : cars) {

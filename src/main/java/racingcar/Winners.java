@@ -1,15 +1,15 @@
 package racingcar;
 
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 public class Winners {
-    private final Set<String> carNames;
+    private final LinkedHashSet<String> carNames;
 
-    public Winners(Set<String> carNames) {
+    public Winners(LinkedHashSet<String> carNames) {
         this.carNames = carNames;
     }
 
-    public Set<String> getCarNames() {
+    public LinkedHashSet<String> getCarNames() {
         return carNames;
     }
 }

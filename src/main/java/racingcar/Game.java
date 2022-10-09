@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Set;
 
 public class Game {
 
@@ -62,5 +63,10 @@ public class Game {
         for (int count = 0; count < car.getPosition(); count++) {
             stringBuilder.append(CAR_TRACE_SYMBOL);
         }
+    }
+
+    public String getWinnerMessage() {
+        Set<String> carNames = cars.getWinners().getCarNames();
+        return "최종 우승자" + WHITE_SPACE + COLON + WHITE_SPACE + String.join(", ", carNames);
     }
 }

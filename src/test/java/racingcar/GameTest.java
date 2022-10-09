@@ -52,4 +52,44 @@ public class GameTest {
 
         Assertions.assertEquals(expectedMessage, resultMessage);
     }
+
+    @Test
+    void 최종_우승자_1명_메시지_생성() throws Throwable {
+        // given
+        int targetRaceCount = 2;
+        Cars cars = new Cars("win", "loser");
+        Game game = new Game(targetRaceCount, cars);
+
+        // when
+        RacingNumberGeneratorMock.executeSomethingWithRaceNumbers(
+                game::startRace,
+                4,
+                3, 4, 4
+        );
+        String winnerMessage = game.getWinnerMessage();
+
+        // then
+        String expectedMessage = "최종 우승자 : win";
+        Assertions.assertEquals(expectedMessage, winnerMessage);
+    }
+
+    @Test
+    void 최종_우승자_2명_메시지_생성() throws Throwable {
+        // given
+        int targetRaceCount = 2;
+        Cars cars = new Cars("win", "loser", "cowin");
+        Game game = new Game(targetRaceCount, cars);
+
+        // when
+        RacingNumberGeneratorMock.executeSomethingWithRaceNumbers(
+                game::startRace,
+                4,
+                3, 4, 4, 4, 4
+        );
+        String winnerMessage = game.getWinnerMessage();
+
+        // then
+        String expectedMessage = "최종 우승자 : win, cowin";
+        Assertions.assertEquals(expectedMessage, winnerMessage);
+    }
 }
