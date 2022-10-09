@@ -16,4 +16,8 @@ public class Game {
             throw new IllegalArgumentException("레이스 횟수는 최소 1회입니다.");
         }
     }
+
+    public int getTargetCount() {
+        return targetRaceCount;
+    }
 }
