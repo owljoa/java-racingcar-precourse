@@ -2,7 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class CommandLineInterface {
+public class GameUserInterface {
 
     public static final String COMMA = ",";
     public static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";

@@ -2,8 +2,8 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        CommandLineInterface commandLineInterface = new CommandLineInterface();
+        GameUserInterface gameUserInterface = new GameUserInterface();
 
-        commandLineInterface.startGame();
+        gameUserInterface.startGame();
     }
 }
