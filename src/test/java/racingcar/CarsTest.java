@@ -3,10 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
-import java.util.Arrays;
 import java.util.Set;
 
 public class CarsTest {
@@ -34,9 +31,9 @@ public class CarsTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Cars(carNames));
     }
 
-    @DisplayName("가장 멀리 간 자동차들이 우승한다")
+    @DisplayName("가장_멀리_간_자동차들이_우승한다")
     @Test
-    void winners() {
+    void 가장_멀리_간_자동차들이_우승한다() throws Throwable {
         // given
         Car winnerCar = new Car("win");
         Car coWinnerCar = new Car("cowin");
@@ -44,25 +41,12 @@ public class CarsTest {
         Cars cars = new Cars(winnerCar, coWinnerCar, loserCar);
 
         // when
-        raceWithInputRaceNumber(cars, 4, 4, 3);
+        RacingNumberGeneratorMock.executeSomethingWithRaceNumbers(cars::race, 4, 4, 3);
 
         // then
         Set<String> winnerCarNames = cars.getWinners().getCarNames();
         Assertions.assertTrue(winnerCarNames.contains(winnerCar.getName()));
         Assertions.assertTrue(winnerCarNames.contains(coWinnerCar.getName()));
         Assertions.assertFalse(winnerCarNames.contains(loserCar.getName()));
-    }
-
-    private void raceWithInputRaceNumber(Cars cars, int firstRaceNumber, int... raceNumbersAfterFirst) {
-        try (final MockedStatic<RacingNumberGenerator> mock = Mockito.mockStatic(RacingNumberGenerator.class)) {
-            mock.when(RacingNumberGenerator::generate).thenReturn(
-                    firstRaceNumber,
-                    Arrays.stream(raceNumbersAfterFirst)
-                            .boxed()
-                            .toArray()
-            );
-
-            cars.race();
-        }
     }
 }
