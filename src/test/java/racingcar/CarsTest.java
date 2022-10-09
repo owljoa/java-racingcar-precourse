@@ -21,16 +21,6 @@ public class CarsTest {
         Assertions.assertNotNull(cars);
     }
 
-    @DisplayName("생성_시_자동차_이름_중복_검증")
-    @Test
-    void 생성_시_자동차_이름_중복되면_예외_발생() {
-        // given
-        String[] carNames = {"dup", "dup"};
-
-        // when, then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Cars(carNames));
-    }
-
     @DisplayName("가장_멀리_간_자동차들이_우승한다")
     @Test
     void 가장_멀리_간_자동차들이_우승한다() throws Throwable {

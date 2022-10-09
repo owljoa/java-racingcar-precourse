@@ -31,4 +31,13 @@ public class ValidationUtilsTest {
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateCarName(inputName));
     }
+
+    @Test
+    void 자동차_이름_중복되면_예외_발생() {
+        // given
+        String[] carNames = {"dup", "dup"};
+
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateCarNames(carNames));
+    }
 }

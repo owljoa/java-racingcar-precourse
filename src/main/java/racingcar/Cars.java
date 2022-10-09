@@ -6,15 +6,8 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String... carNames) {
-        validateDuplicatedCarNames(carNames);
+        ValidationUtils.validateCarNames(carNames);
         this.cars = makeCarList(carNames);
-    }
-
-    private void validateDuplicatedCarNames(String[] carNames) {
-        Set<String> carNameSet = new HashSet<>(Arrays.asList(carNames));
-        if (carNameSet.size() != carNames.length) {
-            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-        }
     }
 
     private List<Car> makeCarList(String[] carNames) {
