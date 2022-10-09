@@ -21,4 +21,10 @@ public class ValidationUtils {
             throw new IllegalArgumentException("레이스 횟수는 최소 1회입니다.");
         }
     }
+
+    public static void validateCarName(String inputCarName) {
+        if (inputCarName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+        }
+    }
 }

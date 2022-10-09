@@ -22,4 +22,13 @@ public class ValidationUtilsTest {
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateRaceCount(inputRaceCount));
     }
+
+    @Test
+    void 자동차_이름_5자_초과_예외_발생_검증() {
+        // given
+        String inputName = "lovelyCar";
+
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateCarName(inputName));
+    }
 }
