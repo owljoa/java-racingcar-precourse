@@ -5,10 +5,12 @@ public class Game {
     private static final int MIN_TARGET_RACE_COUNT = 1;
 
     private final int targetRaceCount;
+    private final Cars cars;
 
-    public Game(int targetRaceCount) {
+    public Game(int targetRaceCount, Cars cars) {
         validateTargetRaceCount(targetRaceCount);
         this.targetRaceCount = targetRaceCount;
+        this.cars = cars;
     }
 
     private void validateTargetRaceCount(int targetRaceCount) {
@@ -19,5 +21,9 @@ public class Game {
 
     public int getTargetCount() {
         return targetRaceCount;
+    }
+
+    public Cars getCars() {
+        return cars;
     }
 }
