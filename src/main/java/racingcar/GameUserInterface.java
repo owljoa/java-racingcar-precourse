@@ -8,27 +8,34 @@ public class GameUserInterface {
     public static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
 
     public void startGame() {
-        Game game;
-        Cars cars = null;
-        int targetRaceCount = 0;
-
-        while (cars == null) {
-            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-            String[] carNames = readCarNames();
-            cars = makeCars(carNames);
-        }
-        game = new Game(cars);
-
-        while (targetRaceCount <= 0) {
-            System.out.println("시도할 회수는 몇회인가요?");
-            targetRaceCount = readRaceCount();
-        }
+        Cars cars = makeCarsWithCarNamesEnteredByUser();
+        Game game = new Game(cars);
+        int targetRaceCount = getTargetRaceCountEnteredByUser();
 
         for (int round = 0; round < targetRaceCount; round++) {
             game.startRace();
             System.out.println(game.getResultMessage());
         }
         System.out.println(game.getWinnerMessage());
+    }
+
+    private Cars makeCarsWithCarNamesEnteredByUser() {
+        Cars cars = null;
+        while (cars == null) {
+            System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            String[] carNames = readCarNames();
+            cars = makeCars(carNames);
+        }
+        return cars;
+    }
+
+    private int getTargetRaceCountEnteredByUser() {
+        int targetRaceCount = 0;
+        while (targetRaceCount <= 0) {
+            System.out.println("시도할 회수는 몇회인가요?");
+            targetRaceCount = readRaceCount();
+        }
+        return targetRaceCount;
     }
 
     private String[] readCarNames() {
