@@ -5,29 +5,15 @@ import java.util.Set;
 
 public class Game {
 
-    private static final int MIN_TARGET_RACE_COUNT = 1;
     private static final String COLON = ":";
     private static final String CAR_TRACE_SYMBOL = "-";
     private static final String WHITE_SPACE = " ";
     private static final String LINE_BREAK = "\n";
 
-    private final int targetRaceCount;
     private final Cars cars;
 
-    public Game(int targetRaceCount, Cars cars) {
-        validateTargetRaceCount(targetRaceCount);
-        this.targetRaceCount = targetRaceCount;
+    public Game(Cars cars) {
         this.cars = cars;
-    }
-
-    private void validateTargetRaceCount(int targetRaceCount) {
-        if (targetRaceCount < MIN_TARGET_RACE_COUNT) {
-            throw new IllegalArgumentException("레이스 횟수는 최소 1회입니다.");
-        }
-    }
-
-    public int getTargetCount() {
-        return targetRaceCount;
     }
 
     public Cars getCars() {
@@ -35,9 +21,7 @@ public class Game {
     }
 
     public void startRace() {
-        for (int round = 0; round < targetRaceCount; round++) {
-            cars.race();
-        }
+        cars.race();
     }
 
     public String getResultMessage() {
