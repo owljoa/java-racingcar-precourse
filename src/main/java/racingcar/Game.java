@@ -44,17 +44,23 @@ public class Game {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Car car : carList) {
-            stringBuilder.append(car.getName());
-            stringBuilder.append(WHITE_SPACE);
-            stringBuilder.append(COLON);
-            stringBuilder.append(WHITE_SPACE);
-            for (int count = 0; count < car.getPosition(); count++) {
-                stringBuilder.append(CAR_TRACE_SYMBOL);
-            }
-            stringBuilder.append(LINE_BREAK);
+            makeResultMessageForSingleCar(stringBuilder, car);
         }
         stringBuilder.append(LINE_BREAK);
 
         return stringBuilder.toString();
+    }
+
+    private void makeResultMessageForSingleCar(StringBuilder stringBuilder, Car car) {
+        String eachCarInitialMessage = car.getName() + WHITE_SPACE + COLON + WHITE_SPACE;
+        stringBuilder.append(eachCarInitialMessage);
+        appendCarTraceSymbols(stringBuilder, car);
+        stringBuilder.append(LINE_BREAK);
+    }
+
+    private void appendCarTraceSymbols(StringBuilder stringBuilder, Car car) {
+        for (int count = 0; count < car.getPosition(); count++) {
+            stringBuilder.append(CAR_TRACE_SYMBOL);
+        }
     }
 }
